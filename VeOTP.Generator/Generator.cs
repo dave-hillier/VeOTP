@@ -7,9 +7,9 @@ namespace VeOTP
 {
 	class Generator
 	{
-		static TimeSpan ValidityDuration = TimeSpan.FromSeconds(2);
+		static TimeSpan ValidityDuration = TimeSpan.FromSeconds(10);
 		static int PasswordDigits = 8;
-	
+
 		public static void Main(string[] args)
 		{
 			// Shared secret.
@@ -22,7 +22,7 @@ namespace VeOTP
 			{
 				Console.SetCursorPosition(0, 0);
 				Console.WriteLine("OTP: {0}", Topt.GetCode(key, DateTime.UtcNow, ValidityDuration, PasswordDigits));
-				Thread.Sleep((int)ValidityDuration.TotalMilliseconds);
+				Thread.Sleep(500);
 			}
 		}
 	}

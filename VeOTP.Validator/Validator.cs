@@ -7,7 +7,7 @@ namespace VeOTP.Validator
 {
 	class Validator
 	{
-		static TimeSpan ValidityDuration = TimeSpan.FromSeconds(2);
+		static TimeSpan ValidityDuration = TimeSpan.FromSeconds(10);
 		static int PasswordDigits = 8;
 
 		public static void Main(string[] args)
@@ -20,10 +20,9 @@ namespace VeOTP.Validator
 			Console.CancelKeyPress += (s, e) => isExiting = true;
 			while (!isExiting)
 			{
-				var code = Topt.GetCode(key, DateTime.UtcNow, ValidityDuration, PasswordDigits);
-
-				Console.Write("Enter password: ");
+				Console.Write("Password to test: ");
 				var codeToTest = Console.ReadLine();
+				var code = Topt.GetCode(key, DateTime.UtcNow, ValidityDuration, PasswordDigits);
 
 				if (code == codeToTest)
 				{
@@ -31,7 +30,7 @@ namespace VeOTP.Validator
 				}
 				else 
 				{
-					Console.WriteLine("Expected: {0}", code);
+					Console.WriteLine("Incorrect Password");
 				}
 			}
 		}

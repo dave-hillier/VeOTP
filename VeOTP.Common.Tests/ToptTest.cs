@@ -77,9 +77,6 @@ namespace VeOTP.Common.Tests
 			Assert.That(code2.Length, Is.EqualTo(digits + 1));
 			Assert.That(code3.Length, Is.EqualTo(digits + 2));
 		}
-
-
-
 	}
 }
 
