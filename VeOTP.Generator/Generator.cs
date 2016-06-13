@@ -9,9 +9,9 @@ namespace VeOTP
 	{
 		public static void Main(string[] args)
 		{
-			TimeSpan validityDuration = TimeSpan.FromSeconds(30);
-			int passwordDigits = 8;
-			string secret = "";
+			TimeSpan validityDuration;
+			int passwordDigits;
+			string secret;
 
 			if (args.Length < 3)
 			{

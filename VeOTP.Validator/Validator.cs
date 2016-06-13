@@ -6,13 +6,11 @@ namespace VeOTP.Validator
 {
 	class Validator
 	{
-
-
 		public static void Main(string[] args)
 		{
-			TimeSpan validityDuration = TimeSpan.FromSeconds(30);
-			int passwordDigits = 8;
-			string secret = "";
+			TimeSpan validityDuration;
+			int passwordDigits;
+			string secret;
 			if (args.Length < 3)
 			{
 				Console.WriteLine("usage: shared_secret password_validity_duration_seconds password_length");
@@ -34,10 +32,11 @@ namespace VeOTP.Validator
 			while (!isExiting)
 			{
 				Console.Write("Password to test: ");
-				var codeToTest = Console.ReadLine();
+				var codeToTest = Console.ReadLine().Trim();
 
 				var code = Topt.GetCode(key, DateTime.UtcNow, validityDuration, passwordDigits);
-				Console.WriteLine((code == codeToTest) ? "✅ Valid " : "⛔️ Incorrect Password");
+				Console.WriteLine((code == codeToTest) ? "✅  Valid " : "⛔ ️ Incorrect Password");
+				Console.WriteLine(code);
 			}
 		}
 	}

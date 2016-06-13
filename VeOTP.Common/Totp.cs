@@ -19,7 +19,7 @@ namespace VeOTP.Common
 		/// <param name="clock">Used in generating in the OTP.</param>
 		/// <param name="validity">The length of the validity period of the OTP.</param>
 		/// <param name="passwordLength">The length of the OTP to be generated.</param>
-		public static string GetCode(byte[] sharedKey, DateTime clock, TimeSpan validity, int passwordLength)
+		public static string GenerateOTP(byte[] sharedKey, DateTime clock, TimeSpan validity, int passwordLength)
 		{
 			var c = GetCounter(clock, validity);
 			var hash = ComputeHash(sharedKey, c);
