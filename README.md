@@ -9,12 +9,14 @@ I've implemented some tests to give coverage and test the assumptions I made in 
 
 To demonstrate usage of the functionality I created two console apps. One to show how use the generation and the other for validation. I have not written tests over these simple console applications.
 
+## VeOTP.Generator
 ![generation](img/gen.png)
 
 Usage: 
 ```
 VeOTP.Generator.exe shared_secret password_validity_duration_seconds password_length
 ```
+## VeOTP.Validator
 ![validation](img/verify.png)
 
 Usage: 
