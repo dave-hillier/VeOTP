@@ -23,3 +23,9 @@ VeOTP.Validator.exe shared_secret password_validity_duration_seconds password_le
 ```
 
 If the same parameters are provided to the Generator and Validator, then when you type the OTP shown in the Generator it should print that it is valid. 
+
+
+## Extra
+
+I thought this seemed pretty simple, so first I knocked up a bash script that could be used to provide similar functionality. See [crypt.sh](crypt.sh). I used OpenSSL commands to create a key is used to encrypt and decrypt the expiry time. The problem with this is it generates long OTP.
+
