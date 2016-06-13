@@ -10,13 +10,10 @@ I've implemented some tests to give coverage and test the assumptions I made in 
 To demonstrate usage of the functionality I created two console apps. One to show how use the generation and the other for validation. I have not written tests over these simple console applications.
 
 ![generation](img/gen.png)
-
 Usage: 
-`VeOTP.Generator.exe shared_secret password_validity_duration_seconds password_length`
-
+```VeOTP.Generator.exe shared_secret password_validity_duration_seconds password_length```
 ![validation](img/verify.png)
-
 Usage: 
-`VeOTP.Validator.exe shared_secret password_validity_duration_seconds password_length`
+```VeOTP.Validator.exe shared_secret password_validity_duration_seconds password_length```
 
 If the same parameters are provided to the Generator and Validator, then when you type the OTP shown in the Generator it should print that it is valid. 
