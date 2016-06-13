@@ -77,6 +77,14 @@ namespace VeOTP.Common.Tests
 			Assert.That(code2.Length, Is.EqualTo(digits + 1));
 			Assert.That(code3.Length, Is.EqualTo(digits + 2));
 		}
+
+		[Test]
+		public void EnsureLengthIsCorrect()
+		{
+			var time = new DateTime(2016, 6, 13);
+			var code1 = Topt.GetCode(sharedKey, time, validity, digits); // Happens to generate a short code. Not the only example, but one for bug elimination
+			Assert.That(code1.Length, Is.EqualTo(digits));
+		}
 	}
 }
 

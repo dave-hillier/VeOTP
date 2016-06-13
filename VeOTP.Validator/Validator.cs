@@ -1,37 +1,43 @@
 ﻿using System;
 using System.Text;
-using System.Threading;
 using VeOTP.Common;
 
 namespace VeOTP.Validator
 {
 	class Validator
 	{
-		static TimeSpan ValidityDuration = TimeSpan.FromSeconds(10);
-		static int PasswordDigits = 8;
+
 
 		public static void Main(string[] args)
 		{
-			// Shared secret.
-			var secret = "Lorem ipsum dolor sit amet, consectetur adipiscing elit posuere.";
-			var key = Encoding.ASCII.GetBytes(secret);
+			TimeSpan validityDuration = TimeSpan.FromSeconds(30);
+			int passwordDigits = 8;
+			string secret = "";
+			if (args.Length < 3)
+			{
+				Console.WriteLine("usage: shared_secret password_validity_duration_seconds password_length");
+				return;
+			}
+			else
+			{
+				secret = args[0];
+				// Note: not validated.
+				validityDuration = TimeSpan.FromSeconds(int.Parse(args[1]));
+				passwordDigits = int.Parse(args[2]);
+			}
 
+			var key = Encoding.UTF8.GetBytes(secret);
 			bool isExiting = false;
 			Console.CancelKeyPress += (s, e) => isExiting = true;
+			Console.Clear();
+
 			while (!isExiting)
 			{
 				Console.Write("Password to test: ");
 				var codeToTest = Console.ReadLine();
-				var code = Topt.GetCode(key, DateTime.UtcNow, ValidityDuration, PasswordDigits);
 
-				if (code == codeToTest)
-				{
-					Console.WriteLine("Valid");
-				}
-				else 
-				{
-					Console.WriteLine("Incorrect Password");
-				}
+				var code = Topt.GetCode(key, DateTime.UtcNow, validityDuration, passwordDigits);
+				Console.WriteLine((code == codeToTest) ? "✅ Valid " : "⛔️ Incorrect Password");
 			}
 		}
 	}
