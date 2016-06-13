@@ -15,6 +15,7 @@ Usage:
 ```
 VeOTP.Generator.exe shared_secret password_validity_duration_seconds password_length
 ```
+Shows the code after `OTP: ` and presents a bar to indicate how long is remaining in its validity.
 ## VeOTP.Validator
 Usage: 
 ```
