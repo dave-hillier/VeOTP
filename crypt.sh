@@ -10,7 +10,7 @@ function generate_otp() {
         echo "Generating secret key $KEY_FILENAME..."
         generate_secret_key
     fi
-    echo -e "$1, $((`date +%s`+$DURATION))" | openssl rsautl -inkey key.txt -encrypt | base64
+    echo -e "$1, $((`date +%s`+$DURATION))" | openssl rsautl -inkey $KEY_FILENAME -encrypt | base64
 }
 
 function check_valid() {
